@@ -1,0 +1,13 @@
+# Mainline ZMK build matrix for the Advantage 360 Pro.
+# Flash adv360pro_left + adv360pro_right. If macOS still ignores the board over
+# USB, flash adv360pro_left-6kro to the left half instead (standard 6-key HID report).
+include:
+  - board: adv360pro_left
+  - board: adv360pro_right
+  - board: adv360pro_left
+    cmake-args: -DCONFIG_ZMK_HID_REPORT_TYPE_HKRO=y
+    artifact-name: adv360pro_left-6kro
+  - board: adv360pro_left
+    shield: settings_reset
+  - board: adv360pro_right
+    shield: settings_reset
